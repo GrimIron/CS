@@ -9,3 +9,14 @@ C:\Users\ODSTc\source\repos\Voting Calculator\Voting Calculator\bin\Debug\netcor
 C:\Users\ODSTc\source\repos\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.pdb
 C:\Users\ODSTc\source\repos\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.dll
 C:\Users\ODSTc\source\repos\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.pdb
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.exe
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.deps.json
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.runtimeconfig.json
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.runtimeconfig.dev.json
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.dll
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\bin\Debug\netcoreapp3.1\Voting Calculator.pdb
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.csprojAssemblyReference.cache
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.AssemblyInfoInputs.cache
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.AssemblyInfo.cs
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.dll
+C:\Users\ODSTc\Source\Repos\GrimIron\CS\Voting Calculator\Voting Calculator\obj\Debug\netcoreapp3.1\Voting Calculator.pdb

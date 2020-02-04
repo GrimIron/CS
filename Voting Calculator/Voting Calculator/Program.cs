@@ -7,7 +7,7 @@ namespace Voting_Calculator
         public static void Main()
         {
             string country = System.IO.File.ReadAllText(@"C:\Users\ODSTc\source\repos\Voting Calculator\Voting Calculator\Country Data.txt");
-            Console.WriteLine("Contents of Country Data.txt = {0}", country);
+            Console.WriteLine(country);
 
         }
     }

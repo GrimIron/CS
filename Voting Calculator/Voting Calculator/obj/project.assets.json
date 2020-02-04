@@ -14,11 +14,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\ODSTc\\source\\repos\\Voting Calculator\\Voting Calculator\\Voting Calculator.csproj",
+      "projectUniqueName": "C:\\Users\\ODSTc\\Source\\Repos\\GrimIron\\CS\\Voting Calculator\\Voting Calculator\\Voting Calculator.csproj",
       "projectName": "Voting Calculator",
-      "projectPath": "C:\\Users\\ODSTc\\source\\repos\\Voting Calculator\\Voting Calculator\\Voting Calculator.csproj",
+      "projectPath": "C:\\Users\\ODSTc\\Source\\Repos\\GrimIron\\CS\\Voting Calculator\\Voting Calculator\\Voting Calculator.csproj",
       "packagesPath": "C:\\Users\\ODSTc\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\ODSTc\\source\\repos\\Voting Calculator\\Voting Calculator\\obj\\",
+      "outputPath": "C:\\Users\\ODSTc\\Source\\Repos\\GrimIron\\CS\\Voting Calculator\\Voting Calculator\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\"
