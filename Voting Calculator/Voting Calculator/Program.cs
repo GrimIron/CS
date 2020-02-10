@@ -2,14 +2,24 @@
 
 namespace Voting_Calculator
 {
-    class Country_data
+    class Program
     {
         public static void Main()
         {
-            string country = System.IO.File.ReadAllText(@"C:\Users\ODSTc\source\repos\Voting Calculator\Voting Calculator\Country Data.txt");
-            Console.WriteLine(country);
-
+        
         }
+    }
+    class Country
+    {
+        string country_name = ;
+        float country_population = ;
+        bool country_eu_memberstate = ;
+
+        public static void List()
+        {
+            
+        }
+
     }
 
 }
