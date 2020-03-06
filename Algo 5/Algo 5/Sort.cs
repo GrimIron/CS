@@ -67,5 +67,41 @@ namespace Algo_5
                 merge(arr, l, m, r);
             }
         }
+
+        public static void QuickSort(int[] data)
+        {
+            //pre: 0 <= n <= data.length
+            //post: values in data[0 ... n-1] are in accending order
+
+            Quick_Sort(data, 0, data.Length - 1);
+        }
+
+        public static void Quick_Sort(int[] data, int left, int right)
+        {
+            int i, j;
+            int pivot, temp;
+
+            i = left;                           //left most value in the array
+            j = right;                          //right most value in the array
+            pivot = data[(left + right) / 2];   //adds the left most value to the right then divides by 2 to get the pivot value 
+
+            do
+            {
+                while ((data[i] < pivot) && (i < right)) i++; //while left most value is less than pivot AND i is less than right: i + 1
+                while ((pivot < data[j]) && (j < left)) j--;  //while pivot is less than rightn most value AND j is less than right: j - 1
+
+                if (i <= j)
+                {
+                    temp = data[i];
+                    data[i] = data[j];
+                    data[j] = temp;
+                    i++;
+                    j--;
+                }
+            }while (i <= j);
+
+            if (left < j) Quick_Sort(data, left, j);
+            if (i < right) Quick_Sort(data, i, right);
+        }
     }
 }

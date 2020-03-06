@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{2D54F998-2E1C-49E7-AB96-7E61EA0F4835}</ProjectGuid>
+    <ProjectGuid>{D432545F-8892-45EE-BC84-6A01CF4CD7C9}</ProjectGuid>
     <OutputType>Exe</OutputType>
-    <RootNamespace>Algo_5</RootNamespace>
-    <AssemblyName>Algo 5</AssemblyName>
+    <RootNamespace>Algo_6</RootNamespace>
+    <AssemblyName>Algo 6</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -45,8 +45,6 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Search.cs" />
-    <Compile Include="Sort.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
