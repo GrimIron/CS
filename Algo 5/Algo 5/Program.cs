@@ -10,9 +10,19 @@ namespace Algo_5
     {
         static void Main(string[] args)
         {
-           int[] myArray_1 = new int[] { -45, -91, -81, 65, 39, -37, 90, -94 };
+            int[] myArray_1 = new int[] { -45, -91, -81, 65, 39, -37, 90, -94 };
+            int counter = 0; 
+            foreach (int a in myArray_1)
+            {
+                Console.WriteLine(myArray_1[counter]);
+                counter++;
+            }
 
-            Sort.Quick_Sort(myArray_1, myArray_1[0], myArray_1[7]);
+            Sort.QuickSort(myArray_1);
+
+            counter = 0;
+
+            Console.ReadLine();
         }
         /*static void Main(string[] args)
         {

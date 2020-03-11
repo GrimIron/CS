@@ -78,6 +78,7 @@ namespace Algo_5
 
         public static void Quick_Sort(int[] data, int left, int right)
         {
+            int counter = 0;
             int i, j;
             int pivot, temp;
 
@@ -99,6 +100,8 @@ namespace Algo_5
                     j--;
                 }
             }while (i <= j);
+
+            Console.WriteLine(counter);
 
             if (left < j) Quick_Sort(data, left, j);
             if (i < right) Quick_Sort(data, i, right);
