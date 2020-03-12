@@ -18,5 +18,31 @@ namespace Assignment_1
             // Item not found in the array
             return -1;
         }
+
+        static int binarySearch(int[] array_to_sort, int left, int right, int key)
+        {
+            if (right >= l)
+            {
+                int mid = left + (right - l) / 2;
+
+                if (arr[mid] == key)                            //Checks to see if the middle element is the key if it is it will return
+                {
+                    return mid;
+                }
+
+                if (arr[mid] > key)
+                {
+                    return binarySearch(array_to_sort, left, mid - 1, key);
+                }
+
+                else
+                {
+                    return binarySearch(arr, mid + 1, r, x);
+                }
+               
+            }
+
+            return -1;
+        }
     }
 }
