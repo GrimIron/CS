@@ -9,7 +9,7 @@ namespace Assignment_1
     class Sort
     {
         //Merge sort algorithms 
-        private static void Merge_Accending(int[] arr, int left, int midpoint, int right)
+        private static void Merge_Accending(int[] array_to_sort, int left, int midpoint, int right)
         {
             int i, j, k;
             int n1 = midpoint - left + 1;
@@ -19,9 +19,9 @@ namespace Assignment_1
             int[] R = new int[n2];
 
             for (i = 0; i < n1; i++)
-                L[i] = arr[left + i];
+                L[i] = array_to_sort[left + i];
             for (j = 0; j < n2; j++)
-                R[j] = arr[midpoint + 1 + j];
+                R[j] = array_to_sort[midpoint + 1 + j];
             i = 0;
             j = 0;
             k = left;
@@ -29,12 +29,12 @@ namespace Assignment_1
             {
                 if (L[i] <= R[j])
                 {
-                    arr[k] = L[i];
+                    array_to_sort[k] = L[i];
                     i++;
                 }
                 else
                 {
-                    arr[k] = R[j];
+                    array_to_sort[k] = R[j];
                     j++;
                 }
                 k++;
@@ -42,27 +42,26 @@ namespace Assignment_1
 
             while (i < n1)
             {
-                arr[k] = L[i];
+                array_to_sort[k] = L[i];
                 i++;
                 k++;
             }
 
             while (j < n2)
             {
-                arr[k] = R[j];
+                array_to_sort[k] = R[j];
                 j++;
                 k++;
             }
         }
-
+        //recersivly calls itself until the size of the array_to_sort becomes one
         public static void MergeSort_Accending(int[] array_to_sort, int left, int right)
-        {
+        {   
             if (left < right)
             {
-                int mid_point = left + (right - left) / 2;
+                int mid_point = left + (right - left) / 2;                  //e.g. 0 + (255 - 0) / 2 =
 
-
-                MergeSort_Accending(array_to_sort, left, mid_point);
+                MergeSort_Accending(array_to_sort, left, mid_point);         
                 MergeSort_Accending(array_to_sort, mid_point + 1, right);
 
                 Merge_Accending(array_to_sort, left, mid_point, right);
@@ -73,130 +72,197 @@ namespace Assignment_1
         //Quick sort algorithms 
         public static void QuickSort_Accending(int[] data)
         {
-            //pre: 0 <= n <= data.length
-            //post: values in data[0 ... n-1] are in accending order
-
-            Quick_Sort_Accending(data, 0, data.Length - 1);
+            quicksort_accend(data, 0, data.Length - 1);
         }
 
-        private static void Quick_Sort_Accending(int[] data, int left, int right)
+        private static void quicksort_accend(int[] arr, int left, int right)
         {
-            int i, j;
-            int pivot, temp;
-
-            i = left;                           //left most value in the array[0]
-            j = right;                          //right most value in the array[255]
-            pivot = data[(left + right) / 2];   //adds the left most value to the right then divides by 2 to get the pivot value 
-
-            do
+            if (left < right)
             {
-                while ((data[i] < pivot) && (i < right)) i++; //while left most value is less than pivot AND i is less than right: i + 1
-                while ((pivot < data[j]) && (j > left)) j--;  //while pivot is less than rightn most value AND j is more than than right: j - 1
+                //pi is partitioning index, arr[pi] is now at right position
+                int part = partition_accend(arr, left, right);
 
-                if (i <= j)                     //If i is less than or equal to j the values will swap over with i becoming j the right value, and j becoming i the left value
+                //recursively sort elements on ether side of the partition
+                quicksort_accend(arr, left, part - 1);
+                quicksort_accend(arr, part + 1, right);
+            }
+        }
+
+        private static int partition_accend(int[] arr, int left, int right)
+        {
+            int pivot = arr[right];   //sets the pivot to the right most value
+            int index = (left - 1);   //sets to the smallest value
+
+            for (int j = left; j < right; j++)
+            {
+                // If current element is smaller  
+                // than the pivot 
+                if (arr[j] < pivot)
                 {
-                    temp = data[i];             //Temp is used as to save the value of i before it can be assigned to j
-                    data[i] = data[j];
-                    data[j] = temp;
-                    i++;
-                    j--;
-                }
-            }while (i <= j);
+                    index++;
 
-            if (left < j) Quick_Sort_Accending(data, left, j);
-            if (i < right) Quick_Sort_Accending(data, i, right);
+                    // swap arr[i] and arr[j] 
+                    int temp = arr[index];
+                    arr[index] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+            //swap arr[i+1] and arr[high] (or pivot) 
+            int temp1 = arr[index + 1];
+            arr[index + 1] = arr[right];
+            arr[right] = temp1;
+
+            return index + 1;
+        }
+
+
+        public static void QuickSort_Descending(int[] data)
+        {
+            quickSort_descend(data, 0, data.Length - 1);
+        }
+
+        private static void quickSort_descend(int[] arr, int left, int right)
+        {
+            if (left < right)
+            {
+                //pi is partitioning index, arr[pi] is now at right position
+                int part = partition_descend(arr, left, right);
+
+                //recursively sort elements on ether side of the partition
+                quickSort_descend(arr, left, part - 1);
+                quickSort_descend(arr, part + 1, right);
+            }
+        }
+
+        private static int partition_descend(int[] arr, int left, int right)
+        {
+            int pivot = arr[right];   //sets the pivot to the right most value
+            int index = (left - 1);   //sets to the smallest value
+
+            for (int j = left; j < right; j++)
+            {
+                // If current element is smaller  
+                // than the pivot 
+                if (arr[j] > pivot)
+                {
+                    index++;
+
+                    // swap arr[i] and arr[j] 
+                    int temp = arr[index];
+                    arr[index] = arr[j];
+                    arr[j] = temp;
+                }
+            }
+
+            //swap arr[i+1] and arr[high] (or pivot) 
+            int temp1 = arr[index + 1];
+            arr[index + 1] = arr[right];
+            arr[right] = temp1;
+
+            return index + 1;
         }
 
 
         //Heap Sort algorithms
-        public static void HeapSort_Assending(int[] heap)
+        public static void HeapSort_Assending(int[] array_to_sort)
         {
-            //pre:0 <= n <= Heap.lenght
-            //Post: values in Heap[0 ... n-1] are in accending order
+            int heap_size = array_to_sort.Length;       //sets value to the lengh of the array e.g. 256
+            int i;                                      //current index
 
-            int heap_size = heap.Length;
-            int i;
-            for (i = (heap_size - 1) / 2; i >= 0; i--)
+            //Builds the heap (rearranges the array), before the sorting begins
+            for (i = (heap_size - 1) / 2; i >= 0; i--)  
             {
-                Max_Heapify(heap, heap_size, i);
+                Max_Heapify(array_to_sort, heap_size, i);     
             }
-            for (i = heap.Length -1; i> 0; i--)
+
+            //extracts a element one by one
+            for (i = array_to_sort.Length -1; i> 0; i--)
             {
-                int temp = heap[i];
-                heap[i] = heap[0];
-                heap[0] = temp;
+                //moves the current index to the end
+                int temp = array_to_sort[i];
+                array_to_sort[i] = array_to_sort[0];
+                array_to_sort[0] = temp;
 
                 heap_size--;
-                Max_Heapify(heap, heap_size, 0);
+                Max_Heapify(array_to_sort, heap_size, 0);
             }
         }
 
         private static void Max_Heapify(int[] heap, int heap_size, int index)
-        {
+        {   
             int left = (index + 1) * 2 - 1;
             int right = (index + 1) * 2;
-            int largest = 0;
+            int largest = index;                 //sets the largest to the current index
 
-            if (left <heap_size && heap[right]> heap[largest])
+            //Checks to see if the left child is larger than the index, if so then largest becomes the value left 
+            if (left < heap_size && heap[left] > heap[largest])
             {
                 largest = left;
             }
-            else
-            {
-                largest = index;
-            }
-
+            //Checks to see is the right child is larger than the largest so far, is so them largest becames the value of right
             if (right < heap_size && heap[right] > heap[largest])
             {
                 largest = right;
             }
 
+            //Checks to see if the largest is equal to the index, if not they swap positions and recurses
             if (largest != index)
             {
                 int temp = heap[index];
                 heap[index] = heap[largest];
                 heap[largest] = temp;
+
+                //recurses the subtree
                 Max_Heapify(heap, heap_size, largest);
             }
 
         }
 
-        public static void Heapsort_Decending(int[] heap)
+        public static void Heapsort_Decending(int[] array_to_sort)
         {
-            int heap_size = heap.Length;                   //sets value to the lengh of the array e.g. 256
-            int i;
-            for (i = (heap_size - 1) / 2; i >= 0; i--)     //sets i heap_size - 1 e.g. 255. Divides by 2 e.g. 127.5 Checks to see is its more than or equal to 0 if so then i - 1
-            {
-                Min_Heapify(heap, heap_size, i);           //runs the min_heapify with the arguments (array of unstorted numbers), (heap_size e.g 256), (index e.g. 127) 
-            }
-            for (i = heap_size - 1; i > 0; i--)            //sets i heap_size - 1 e.g. 255. Checks to see is its more than or equal to 0 if so then i - 1 e.g 254
-            {
-                int temp = heap[0];                        //sets temp to to the value in heap[0]
-                heap[0] = heap[i];                         //set heap[0] to value heap[i]
-                heap[i] = temp;                            //sets heap[i] to the value of temp
+            int heap_size = array_to_sort.Length;     //sets value to the lengh of the array e.g. 256
+            int i;                                    //current index
 
-                heap_size--;                               //reduces heap size by 1
-                Min_Heapify(heap, heap_size, 0);
+            //builds the heap (rearranges the array), before the sorting begins
+            for (i = (heap_size - 1) / 2; i >= 0; i--)     
+            {
+                Min_Heapify(array_to_sort, heap_size, i);          
+            }
+
+            //extracts a element one by one
+            for (i = heap_size - 1; i > 0; i--)          
+            {
+                //moves the current index to the end
+                int temp = array_to_sort[i];
+                array_to_sort[i] = array_to_sort[0];
+                array_to_sort[0] = temp;                            
+
+                heap_size--;                               
+                Min_Heapify(array_to_sort, heap_size, 0);
             }
         }
 
         private static void Min_Heapify(int[] heap, int heap_size, int index)
         {
-            int left = (2 * index) + 1;                              //set value e.g. index = 255. (2 * 127) + 1 = 255
-            int right = (2 * index) + 2;                             //set value e.g. index = 256. (2 * 127) + 2 = 256
-            int smallest = index;
+            int left = (2 * index) + 1;                              
+            int right = (2 * index) + 2;                             
+            int smallest = index;           //set smallest as the current index
 
-            if (left < heap_size && heap[left] < heap[smallest])     //checks to see if left is less than the heap_size AND that the value in heap[left] is less than heap[smallest] e.g.(255 < 256 && heap[left]255 > heap[smallest]127)
+            //checks to see if the left child is smaller than the index, if it is smallest is set the value of left 
+            if (left < heap_size && heap[left] < heap[smallest])     
             {
-                smallest = left;                                     //if the above is true, smallest is assigned the value of left e.g. 255
+                smallest = left;                                     
             }
 
-            if (right < heap_size && heap[right] < heap[smallest])   //checks to see if right is < heap_size AND that the value in heap[right] is larger than heap[smallest]
+            //checks to see if the right child is the smallest so far, is it is smallest is set to the value of right
+            if (right < heap_size && heap[right] < heap[smallest])   
             {
-                smallest = right;                                    //is the above is true then it is assigned the value right
+                smallest = right;                                   
             }
 
-            if (smallest != index)                                  //
+            //is the smallest is not equal to the index, if not they swap positons and recurses.
+            if (smallest != index)                                
             {
                 int temp = heap[index];
                 heap[index] = heap[smallest];

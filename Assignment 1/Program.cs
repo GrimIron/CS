@@ -10,15 +10,19 @@ namespace Assignment_1
     {
         static void Main(string[] args)
         {
-            int[] array = net_256_choice();
+            int[] array = net_choice();
 
-            Quicksort_test(array);
+            sort_choice(array);
+
+            Console.WriteLine("\n");
+
+            search_choice(array);
 
             Console.ReadLine();
 
         }
 
-        private static int[] net_256_choice()
+        private static int[] net_choice()
         {
             string Net_1_256 = @"C:\Users\ODSTc\source\repos\GrimIron\CS\Assignment 1\Net_1_256.txt";
             string Net_1_2048 = @"C:\Users\ODSTc\source\repos\GrimIron\CS\Assignment 1\Net_1_2048.txt";
@@ -26,10 +30,6 @@ namespace Assignment_1
             string Net_2_2048 = @"C:\Users\ODSTc\source\repos\GrimIron\CS\Assignment 1\Net_2_2048.txt";
             string Net_3_256 = @"C:\Users\ODSTc\source\repos\GrimIron\CS\Assignment 1\Net_3_256.txt";
             string Net_3_2048 = @"C:\Users\ODSTc\source\repos\GrimIron\CS\Assignment 1\Net_3_2048.txt";
-
-            int[] n1_256 = Files.Net_file(256, Net_1_256);
-            int[] n2_256 = Files.Net_file(256, Net_2_256);
-            int[] n3_256 = Files.Net_file(256, Net_3_256);
 
             int choice;
 
@@ -44,82 +44,185 @@ namespace Assignment_1
 
             if (choice == 1)
             {
+                int[] n1_256 = Files.Net_file(256, Net_1_256);
                 return n1_256;
             }
             else if (choice == 2)
             {
+                int[] n2_256 = Files.Net_file(256, Net_2_256);
                 return n2_256;
             }
             else
             {
+                int[] n3_256 = Files.Net_file(256, Net_3_256);
                 return n3_256;
             }
         }
 
-        private static void Quicksort_test(int[] Array_to_sort)
+        private static void sort_choice(int[] array)
         {
-            int counter = 0;
-
-            Sort.QuickSort(Array_to_sort);
-
-            foreach (int a in Array_to_sort)
+            int choice;
+            do
             {
-                if ((counter % 10) == 0)
-                {
-                    Console.Write("{0} ", Array_to_sort[counter]);
-                }
-                counter++;
+                Console.WriteLine("What type of sort do you want to use:");
+                Console.WriteLine("Enter 1 for Heap sort");
+                Console.WriteLine("Enter 2 for Quick sort");
+                Console.WriteLine("Enter 3 for Insertion Sort");
+                Console.WriteLine("Enter 4 for Bubble Sort");
             }
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 4);
 
-            counter = 0;
-
-            Console.ReadLine();
-        }
-
-        private static void Mergesort_test(int[] Array_to_sort)
-        {
-
-        }
-        private static void Mergesort()
-        {
-            int[] myint = genarate_randon_array(256, 0, 2048);
-
-            //sort array
-            Sort.MergeSort(myint, 0, myint.Length - 1);
-
-            //display the array, easier for testing search algo's
-            for (int i = 0; i < myint.Length; i++)
+            if (choice == 1)
             {
-                Console.Write(myint[i] + ",");
+                Heap_Sort(array);
             }
-
-            //preform linear search, put result in index
-            int index = Search.linear_search(myint, myint.Length, 2020);
-
-            //tell user if value was in the array
-            if (index != -1)
+            else if (choice == 2)
             {
-                Console.WriteLine("Value found at position {0}", index);
+                Quick_Sort(array);
+            }
+            else if (choice == 3)
+            {
+               
             }
             else
             {
-                Console.WriteLine("Value does not exist in search space");
-            }
 
-            Console.ReadLine();
+            }
         }
 
-        private static int[] genarate_randon_array(int size, int min, int max)
+        private static void search_choice(int[] array)
         {
-            Random r = new Random();
-            int[] myarr = new int[size];
-
-            for (int i = 0; i < size; i++)
+            int choice;
+            do
             {
-                myarr[i] = r.Next(min, max + 1);
+                Console.WriteLine("What type of sort do you want to use:");
+                Console.WriteLine("Enter 1 for Linear search");
+                Console.WriteLine("Enter 2 for Binary search");
+            }
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 2);
+
+            if (choice == 1)
+            {
+                linear_search(array);
+            }
+            else
+            {
+                binary_search(array);
+            }
+    }
+
+        private static void Quick_Sort(int[] array)
+        {
+            Console.WriteLine("You chose Quick sort!\n");
+            int choice;
+            do
+            {
+                Console.WriteLine("Do you want to sort in accending or descending order:");
+                Console.WriteLine("Enter 1 for accending");
+                Console.WriteLine("Enter 2 for descending");
+            }
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 2);
+
+            if (choice == 1)
+            {
+                Sort.QuickSort_Accending(array);
+                Console.WriteLine("Every 10th value in accending order");
+            }
+            else
+            {
+                Sort.QuickSort_Descending(array);
+                Console.WriteLine("Every 10th value in descending order");
             }
 
-            return myarr;
+            int counter = 0;
+            foreach (int a in array)
+            {
+                //Console.WriteLine(a);
+                if ((counter % 10) == 0)
+                {
+                    Console.Write("{0} ", array[counter]);
+                }
+                counter++;
+            }
+        }
+
+        private static void Heap_Sort(int[] array)
+        {
+            Console.WriteLine("You chose Heap sort!\n");
+            int choice;
+            do
+            {
+                Console.WriteLine("Do you want to sort in accending or descending order:");
+                Console.WriteLine("Enter 1 for accending");
+                Console.WriteLine("Enter 2 for descending");
+            }
+            while (!int.TryParse(Console.ReadLine(), out choice) || choice > 2);
+
+            if (choice == 1)
+            {
+                Sort.HeapSort_Assending(array);
+                Console.WriteLine("Every 10th value in accending order:");
+            }
+            else
+            {
+                Sort.Heapsort_Decending(array);
+                Console.WriteLine("Every 10th value in descending order:");
+            }
+
+            int counter = 0;
+            foreach (int a in array)
+            {
+                if ((counter % 10) == 0)
+                {
+                    Console.Write("{0} ", array[counter]);
+                }
+                counter++;
+            }
+        }
+
+        private static void linear_search(int[] array)
+        {
+            int choice;
+            do
+            {
+                Console.WriteLine("What number do you want to find:");
+            }
+            while (!int.TryParse(Console.ReadLine(), out choice));
+
+            int array_size = array.Length;
+            Search.linear_search(array, array_size, choice);
+        }
+
+        private static void binary_search(int[] array_to_sort)
+        {
+            int array_left = 0;
+            int array_right = array_to_sort.Length - 1;
+            int choice;
+            do
+            {
+                Console.WriteLine("What number do you want to find:");
+            }
+            while (!int.TryParse(Console.ReadLine(), out choice));
+
+            int responce = Search.binary_search(array_to_sort, array_left, array_right, choice);
+
+            if (responce == -1)
+            {
+                Console.WriteLine("----Search Complete----");
+            }
+            else
+            {
+                //Console.WriteLine("The number was found at: " + array_to_sort[responce] + " at position " + responce);
+                //Console.WriteLine(responce);
+                //Console.WriteLine(responce - 1);
+                //Console.WriteLine(responce + 1);
+                //Console.WriteLine(array_left);
+                //Console.WriteLine(array_right);
+                //Console.ReadLine();
+
+                Search.binary_search_more(array_to_sort, array_left, responce, choice);
+                //Search.binary_search_more(array_to_sort, responce + 1, array_right, choice);
+            }
         }
     }
 }
